@@ -1,7 +1,9 @@
-package net.slipp.user;
+package net.slipp.domain.user;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
+
+import net.slipp.domain.user.User;
 
 import org.junit.Test;
 

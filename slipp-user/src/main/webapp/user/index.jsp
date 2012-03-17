@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%><%@ include file="/WEB-INF/jsp/include/tags.jspf"%><%@page
-	import="java.util.*"%><%@page import="net.slipp.user.*"%>
+	import="java.util.*"%><%@page import="net.slipp.domain.user.*"%>
 
 <%@ include file="loginCheck.jsp"%>
 

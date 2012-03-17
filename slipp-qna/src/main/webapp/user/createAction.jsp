@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=euc-kr"%>
-<%@page import="net.slipp.user.*"%>
+<%@page import="net.slipp.domain.user.*"%>
 <%
 try{
 	String userId = request.getParameter("userId");

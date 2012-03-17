@@ -1,10 +1,17 @@
-package net.slipp.user;
+package net.slipp.domain.user;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class User {
+	@Id
 	private String userId = null;
 	private String password = null;
 	private String name = null;
 	private String email = null;
+	
+	public User() {}
 
 	public User(String userId, String password, String name, String email) {
 		this.userId = userId;

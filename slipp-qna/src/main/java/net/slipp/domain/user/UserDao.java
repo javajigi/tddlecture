@@ -1,4 +1,4 @@
-package net.slipp.user;
+package net.slipp.domain.user;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

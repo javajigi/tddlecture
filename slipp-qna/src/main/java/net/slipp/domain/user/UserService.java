@@ -1,4 +1,4 @@
-package net.slipp.user;
+package net.slipp.domain.user;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%><%@page import="net.slipp.user.*"%>
+	pageEncoding="UTF-8"%><%@page import="net.slipp.domain.user.*"%>
 <%
 	try {
 		String userId = request.getParameter("userId");
@@ -11,7 +11,7 @@
 
 		//정상적으로 로그인 되었을 경우 세션에 사용자 아이디 저장.
 		session = request.getSession();
-		session.setAttribute("userId", userId);
+		session.setAttribute("user", service.findUser(userId));
 
 		//모든 작업 완료후 이동할 페이지를 결정.
 		response.sendRedirect("index.jsp");

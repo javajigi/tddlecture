@@ -2,11 +2,12 @@
 %><!DOCTYPE html>
 <html>
   <head>
-    <title>사용자 관리</title>
+    <title>SLiPP</title>
   </head>
   <body>
         <div id="main">
-        여기가 메인입니다.
+        <a href="/user">사용자 관리</a><br/><br/>
+        <a href="/qna">질문 답변 게시판</a>
         </div>
   </body>
 </html>
