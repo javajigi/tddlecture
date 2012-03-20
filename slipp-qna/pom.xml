@@ -11,6 +11,7 @@
 		<jpa.version>2.0.0</jpa.version>
 		<hibernate.version>3.5.6-Final</hibernate.version>		
 		<org.springframework.version>3.1.1.RELEASE</org.springframework.version>
+		<jetty.version>6.1.22</jetty.version>
 	</properties>
 
 	<dependencies>
@@ -45,7 +46,21 @@
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.2.2</version>
-		</dependency>		
+		</dependency>	
+		
+		<!-- Jetty -->
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jetty</artifactId>
+			<version>${jetty.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jsp-2.1-jetty</artifactId>
+			<version>${jetty.version}</version>
+			<scope>provided</scope>
+		</dependency>
 
 		<!-- Servlet, JSP, JSTL -->
 		<dependency>
@@ -161,6 +176,13 @@
 					<wtpContextName>/</wtpContextName>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<warSourceDirectory>webapp</warSourceDirectory>
+					<warSourceExcludes>html/**</warSourceExcludes>
+				</configuration>
+			</plugin>			
 		</plugins>
 	</build>
 </project>

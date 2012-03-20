@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	<import resource="classpath:infrastructure.xml"/>
 	
-	<jpa:repositories base-package="net.slipp.domain"/>
+	<jpa:repositories base-package="net.slipp.repository"/>
 
 	<context:component-scan base-package="net.slipp.domain">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />

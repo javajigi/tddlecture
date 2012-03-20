@@ -9,10 +9,6 @@
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
 	<context-param>
-		<param-name>webAppRootKey</param-name>
-		<param-value>/slipp-qna</param-value>
-	</context-param>
-	<context-param>
 		<param-name>log4jConfigLocation</param-name>
 		<param-value>classpath:log4j.xml</param-value>
 	</context-param>
@@ -20,6 +16,7 @@
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
+	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
