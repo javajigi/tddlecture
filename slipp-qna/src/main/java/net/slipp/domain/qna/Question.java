@@ -10,6 +10,7 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,12 +20,13 @@ import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import net.slipp.domain.CreatedAndUpdatedDateEntityListener;
+import net.slipp.domain.HasCreatedAndUpdatedDate;
 import net.slipp.domain.user.User;
 import net.slipp.repository.qna.TagRepository;
 
@@ -37,7 +39,8 @@ import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
 @Entity
-public class Question {
+@EntityListeners({ CreatedAndUpdatedDateEntityListener.class })
+public class Question implements HasCreatedAndUpdatedDate {
 	private static final Logger logger = LoggerFactory.getLogger(Question.class);
 	
 	@Id
@@ -65,7 +68,7 @@ public class Question {
 	private Date createdDate;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "updated_date")
+	@Column(name = "updated_date", nullable = false)
 	private Date updatedDate;
 
 	@Column(name = "answer_count", nullable = false)
@@ -188,21 +191,18 @@ public class Question {
 	public void setQuestionId(Long questionId) {
 		this.questionId = questionId;
 	}
+	
+	public void writedBy(User user) {
+		this.writerId = user.getUserId();
+		this.writerName = user.getName();
+	}
 
 	public String getWriterId() {
 		return writerId;
 	}
 
-	public void setWriterId(String writerId) {
-		this.writerId = writerId;
-	}
-
 	public String getWriterName() {
 		return writerName;
-	}
-
-	public void setWriterName(String writerName) {
-		this.writerName = writerName;
 	}
 
 	public String getTitle() {
@@ -222,7 +222,11 @@ public class Question {
 	}
 
 	public String getPlainTags() {
-		return plainTags;
+		String displayTags = "";
+		for (Tag tag : this.tags) {
+			displayTags += tag.getName() + " ";
+		}
+		return displayTags;
 	}
 
 	public void setPlainTags(String plainTags) {
@@ -247,6 +251,12 @@ public class Question {
 
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
+	}
+	
+	public void update(Question newQuestion) {
+		this.title = newQuestion.title;
+		this.contentsHolder = newQuestion.contentsHolder;
+		this.plainTags = newQuestion.plainTags;
 	}
 
 	@Override

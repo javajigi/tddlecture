@@ -9,7 +9,7 @@
 	<div id="main">
 		<table>
 			<tr>
-				<td>
+				<td height="400" valign="top">
 					<table>
 						<tr>
 							<td width="400">제목</td>
@@ -18,7 +18,7 @@
 						</tr>
 						<c:forEach items="${questions}" var="each">
 							<tr>
-								<td width="400">${each.title}</td>
+								<td width="400"><a href="/qna/${each.questionId}">${each.title}</a></td>
 								<td width="100">${each.writerName}</td>
 								<td width="150"><fmt:formatDate
 										pattern="yyyy-MM-dd hh:mm:ss" value="${each.createdDate}" /></td>
@@ -26,10 +26,16 @@
 						</c:forEach>
 					</table>
 				</td>
-				<td>
-					<c:forEach items="${tags}" var="each">
-						${each.name} X ${each.taggedCount} <br/>
-					</c:forEach>
+				<td height="400" valign="top">
+					<table>
+						<tr>	
+							<td>			
+							<c:forEach items="${tags}" var="each">
+								${each.name} X ${each.taggedCount} <br/>
+							</c:forEach>
+							</td>
+						</tr>
+					</table>
 				</td>
 			</tr>
 		</table>

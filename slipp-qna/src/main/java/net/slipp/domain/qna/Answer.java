@@ -2,17 +2,24 @@ package net.slipp.domain.qna;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import net.slipp.domain.CreatedAndUpdatedDateEntityListener;
+import net.slipp.domain.HasCreatedAndUpdatedDate;
 import net.slipp.domain.user.User;
 
 @Entity
-public class Answer {
+@EntityListeners({ CreatedAndUpdatedDateEntityListener.class })
+public class Answer implements HasCreatedAndUpdatedDate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long answerId;
@@ -23,9 +30,13 @@ public class Answer {
 	
 	private String contents;
 	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_date", nullable = false, updatable = false)
 	private Date createdDate;
-	
-	private Date modifiedDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updated_date", nullable = false)
+	private Date updatedDate;
 	
 	@ManyToOne
 	@org.hibernate.annotations.ForeignKey(name = "fk_answer_parent_id")
@@ -37,5 +48,45 @@ public class Answer {
 	
 	public Question getQuestion() {
 		return this.question;
+	}
+
+	public Long getAnswerId() {
+		return answerId;
+	}
+
+	public void setAnswerId(Long answerId) {
+		this.answerId = answerId;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getContents() {
+		return contents;
+	}
+
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
 	}
 }

@@ -1,7 +1,5 @@
 package net.slipp.domain.qna;
 
-import java.util.Date;
-
 import javax.annotation.Resource;
 
 import net.slipp.domain.user.User;
@@ -21,9 +19,15 @@ public class QnaService {
 	private QuestionRepository questionRepository;
 	
 	public void createQuestion(User user, Question question) {
-		question.setWriterId(user.getUserId());
-		question.setWriterName(user.getName());
-		question.setCreatedDate(new Date());
+		question.writedBy(user);
+		question.initializeTags(tagRepository);
+		questionRepository.save(question);
+	}
+	
+	public void updateQuestion(User user, Question newQuestion) {
+		Question question = questionRepository.findOne(newQuestion.getQuestionId());
+		question.writedBy(user);
+		question.update(newQuestion);
 		question.initializeTags(tagRepository);
 		questionRepository.save(question);
 	}
@@ -32,7 +36,12 @@ public class QnaService {
 		return questionRepository.findAll();
 	}
 	
+	public Question findByQuestionId(Long id) {
+		return questionRepository.findOne(id);
+	}
+	
 	public Iterable<Tag> findsTag() {
 		return tagRepository.findAll();
 	}
+
 }

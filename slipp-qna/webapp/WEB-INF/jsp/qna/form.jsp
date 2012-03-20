@@ -6,19 +6,25 @@
 </head>
 <body>
 	<div id="main">
-		<form:form modelAttribute="question" action="/qna" method="post">
+		<c:set var="method" value="post" />
+		<c:if test="${not empty question.questionId}">
+		<c:set var="method" value="put" />
+		</c:if>
+		
+		<form:form modelAttribute="question" action="/qna" method="${method}">
+			<form:hidden path="questionId"/>
 			<table>
 				<tr>
-					<td>제목</td>
-					<td><form:input path="title" size="90"/></td>
+					<td width="80">제목</td>
+					<td><form:input path="title" size="70"/></td>
 				</tr>
 				<tr>
-					<td>내용</td>
-					<td><form:textarea path="contents" rows="5" cols="150"></form:textarea></td>
+					<td width="80">내용</td>
+					<td><form:textarea path="contents" rows="5" cols="130"></form:textarea></td>
 				</tr>
 				<tr>
-					<td>태그</td>
-					<td><form:input path="plainTags" size="90"/></td>
+					<td width="80">태그</td>
+					<td><form:input path="plainTags" size="70"/></td>
 				</tr>
 			</table>
 			<input type="submit" value="질문하기" />		

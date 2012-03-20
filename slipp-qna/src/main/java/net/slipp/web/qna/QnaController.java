@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -50,6 +51,33 @@ public class QnaController {
 		}
 		qnaService.createQuestion(user, question);
 		return "redirect:/qna";
+	}
+	
+	@RequestMapping("/{id}/form")
+	public String updateForm(@PathVariable Long id, HttpServletRequest request, Model model) {
+		User user = getLoginUser(request);
+		if (user == null) {
+			return "redirect:/user/login.jsp";
+		}
+		model.addAttribute("question", qnaService.findByQuestionId(id));
+		return "qna/form";
+	}
+	
+	@RequestMapping(value="", method=RequestMethod.PUT)
+	public String update(HttpServletRequest request, Question question) {
+		logger.debug("Question : {}", question);
+		User user = getLoginUser(request);
+		if (user == null) {
+			return "redirect:/user/login.jsp";
+		}
+		qnaService.updateQuestion(user, question);
+		return "redirect:/qna";
+	}
+	
+	@RequestMapping("{id}")
+	public String show(@PathVariable Long id, Model model) {
+		model.addAttribute("question", qnaService.findByQuestionId(id));
+		return "qna/show";
 	}
 	
 	private User getLoginUser(HttpServletRequest request) {
