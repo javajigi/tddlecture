@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%><%@page import="net.slipp.domain.user.*"%>
+	pageEncoding="UTF-8"%><%@page import="net.slipp.user.*"%>
 <%
 	try {
 		String userId = request.getParameter("userId");
