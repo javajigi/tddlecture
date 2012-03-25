@@ -16,6 +16,7 @@
 	<div id="main">
 		<form name="userForm" method="post" action="updateAction.jsp">
 			<input type="hidden" name="userId" value="${user.userId}" />
+			<input type="hidden" name="isAdmin" value="${user.admin}" />
 			<table>
 				<tr>
 					<td>사용자 아이디</td>

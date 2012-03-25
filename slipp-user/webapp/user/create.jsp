@@ -24,6 +24,10 @@
 					<td>이메일</td>
 					<td><input type="text" name="email"></td>
 				</tr>
+                <tr>
+                    <td>관리자 유무</td>
+                    <td><input type="checkbox" name="isAdmin" value="true"></td>
+                </tr>				
 			</table>
 			<input type="submit" value="사용자추가" />
 		</form>

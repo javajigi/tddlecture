@@ -6,8 +6,13 @@ try{
 	String password = request.getParameter("password");
 	String name = request.getParameter("name");
 	String email = request.getParameter("email");
+	String admin = request.getParameter("isAdmin");
+	if (admin == null) {
+		admin = "false";
+	}
 
-	User user = new User(userId, password, name, email);
+	boolean isAdmin = Boolean.parseBoolean(admin);
+	User user = new User(userId, password, name, email, isAdmin);
 	UserService service = new UserService();
 	service.create(user);
 

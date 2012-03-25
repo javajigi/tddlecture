@@ -5,12 +5,14 @@ public class User {
 	private String password = null;
 	private String name = null;
 	private String email = null;
-
-	public User(String userId, String password, String name, String email) {
+	private boolean isAdmin = false;
+	
+	public User(String userId, String password, String name, String email, boolean isAdmin) {
 		this.userId = userId;
 		this.password = password;
 		this.name = name;
 		this.email = email;
+		this.isAdmin = isAdmin;
 	}
 
 	public String getEmail() {
@@ -27,6 +29,10 @@ public class User {
 
 	public String getUserId() {
 		return userId;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
 	}
 
 	public boolean isMatchPassword(String inputPassword) {

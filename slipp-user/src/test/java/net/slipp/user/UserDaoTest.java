@@ -16,7 +16,7 @@ public class UserDaoTest {
 
 	@Test
 	public void crud() throws Exception {
-		User expected = new User("userId", "password", "name", "javajigi@slipp.net");
+		User expected = new User("userId", "password", "name", "javajigi@slipp.net", true);
 		dut.remove(expected.getUserId());
 
 		dut.create(expected);
