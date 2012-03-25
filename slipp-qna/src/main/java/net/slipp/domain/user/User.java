@@ -10,30 +10,61 @@ public class User {
 	private String password = null;
 	private String name = null;
 	private String email = null;
+	private boolean isAdmin = false;
 	
 	public User() {}
 
-	public User(String userId, String password, String name, String email) {
+	public User(String userId, String password, String name, String email, boolean isAdmin) {
 		this.userId = userId;
 		this.password = password;
 		this.name = name;
 		this.email = email;
+		this.isAdmin = isAdmin;
+	}
+	
+	public String getUserId() {
+		return userId;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public String getName() {
-		return name;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public String getUserId() {
-		return userId;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	public void update(User updatedUser) {
+		this.name = updatedUser.name;
+		this.email = updatedUser.email;
 	}
 
 	public boolean isMatchPassword(String inputPassword) {
