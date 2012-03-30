@@ -1,8 +1,10 @@
 package net.slipp.web.user;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import net.slipp.domain.user.ExistedUserException;
+import net.slipp.domain.user.PasswordMismatchException;
 import net.slipp.domain.user.User;
 import net.slipp.domain.user.UserService;
 
@@ -49,5 +51,21 @@ public class UserController {
 	public String update(User user, Model model) {
 		userService.update(user);
 		return "redirect:user";
+	}
+	
+	@RequestMapping("/login/form")
+	public String loginForm(Model model) {
+		return "user/login";
+	}
+	
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String login(String userId, String password, HttpSession session) {
+		try {
+			userService.login(userId, password);
+			session.setAttribute("user", userService.findUser(userId));
+		} catch (PasswordMismatchException e) {
+			return "user/login";
+		}
+		return "redirect:/";
 	}
 }

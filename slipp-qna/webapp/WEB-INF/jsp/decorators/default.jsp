@@ -17,7 +17,7 @@
             </div>
             <ul id="tools">
                 <li>
-                    <a href="/user/login.jsp">Log in</a>
+                    <a href="/user/login/form">Log in</a>
                 </li>
             </ul>
             <div id="title">

@@ -2,17 +2,20 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" media="screen" href="../WEB-INF/static_resources/stylesheets/qunit.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
 <script type="text/javascript" src="../WEB-INF/static_resources/javascripts/qunit.js"></script>
+<script type="text/javascript" src="../WEB-INF/static_resources/javascripts/slipp.js"></script>
 <script type="text/javascript">
 (function() {
 	"use strict";
 	
-	ArcheAge.namespace("Utils");
+	Slipp.namespace("Utils");
 
-	ArcheAge.Utils = function() {	    
+	Slipp.Utils = function() {	    
 	}
 	
-	ArcheAge.Utils.prototype = {
+	Slipp.Utils.prototype = {
 		validateByElement: function(validator, $element, value) {
 		    $element.val(value);
 			return validator.element($element);
@@ -21,7 +24,7 @@
 }());
 
 $(document).ready(function() {
-    var utils = new ArcheAge.Utils();
+    var utils = new Slipp.Utils();
     
 	test("Test Validation Pluglin", function() {
 	    var options = {

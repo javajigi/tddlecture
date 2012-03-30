@@ -35,7 +35,7 @@ public class QnaController {
 	public String createForm(HttpServletRequest request, Model model) {
 		User user = getLoginUser(request);
 		if (user == null) {
-			return "redirect:/user/login.jsp";
+			return "redirect:/user/login/form";
 		}
 		model.addAttribute(new Question());
 		return "qna/form";
@@ -47,7 +47,7 @@ public class QnaController {
 		
 		User user = getLoginUser(request);
 		if (user == null) {
-			return "redirect:/user/login.jsp";
+			return "redirect:/user/login/form";
 		}
 		qnaService.createQuestion(user, question);
 		return "redirect:/qna";
@@ -57,7 +57,7 @@ public class QnaController {
 	public String updateForm(@PathVariable Long id, HttpServletRequest request, Model model) {
 		User user = getLoginUser(request);
 		if (user == null) {
-			return "redirect:/user/login.jsp";
+			return "redirect:/user/login/form";
 		}
 		model.addAttribute("question", qnaService.findByQuestionId(id));
 		return "qna/form";
@@ -68,7 +68,7 @@ public class QnaController {
 		logger.debug("Question : {}", question);
 		User user = getLoginUser(request);
 		if (user == null) {
-			return "redirect:/user/login.jsp";
+			return "redirect:/user/login/form";
 		}
 		qnaService.updateQuestion(user, question);
 		return "redirect:/qna";

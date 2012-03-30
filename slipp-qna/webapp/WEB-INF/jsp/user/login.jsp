@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div id="main">
-		<form name="userForm" method="post" action="loginAction.jsp">
+		<form name="userForm" method="post" action="/user/login">
 			<table>
 				<tr>
 					<td>사용자 아이디</td>
