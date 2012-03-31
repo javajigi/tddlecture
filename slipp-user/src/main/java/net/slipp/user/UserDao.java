@@ -14,12 +14,10 @@ public class UserDao {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			StringBuffer insertQuery = new StringBuffer();
-			insertQuery.append("INSERT INTO USERS VALUES ");
-			insertQuery.append("(?, ?, ?, ?, ?)");
+			String query = "INSERT INTO USERS VALUES (?, ?, ?, ?, ?)";
 
 			con = ConnectionManager.getConnection();
-			pstmt = con.prepareStatement(insertQuery.toString());
+			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user.getUserId());
 			pstmt.setString(2, user.getPassword());
 			pstmt.setString(3, user.getName());
@@ -42,13 +40,10 @@ public class UserDao {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			StringBuffer updateQuery = new StringBuffer();
-			updateQuery.append("UPDATE USERS SET ");
-			updateQuery.append("name=?, email=?");
-			updateQuery.append("WHERE userid=? ");
+			String query = "UPDATE USERS SET name=?, email=? WHERE userid=?";
 
 			con = ConnectionManager.getConnection();
-			pstmt = con.prepareStatement(updateQuery.toString());
+			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user.getName());
 			pstmt.setString(2, user.getEmail());
 			pstmt.setString(3, user.getUserId());
@@ -69,12 +64,10 @@ public class UserDao {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			StringBuffer removeQuery = new StringBuffer();
-			removeQuery.append("DELETE FROM USERS ");
-			removeQuery.append("WHERE userid=? ");
+			String query = "DELETE FROM USERS WHERE userid=?";
 
 			con = ConnectionManager.getConnection();
-			pstmt = con.prepareStatement(removeQuery.toString());
+			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, userId);
 
 			pstmt.executeUpdate();
@@ -94,14 +87,10 @@ public class UserDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			StringBuffer findQuery = new StringBuffer();
-			findQuery.append("SELECT ");
-			findQuery.append("userId, password, name, email, isAdmin ");
-			findQuery.append("FROM USERS ");
-			findQuery.append("WHERE userid=? ");
+			String query = "SELECT userId, password, name, email, isAdmin FROM USERS WHERE userid=?";
 
 			con = ConnectionManager.getConnection();
-			pstmt = con.prepareStatement(findQuery.toString());
+			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, userId);
 
 			rs = pstmt.executeQuery();
@@ -131,14 +120,10 @@ public class UserDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			StringBuffer findQuery = new StringBuffer();
-			findQuery.append("SELECT ");
-			findQuery.append("userid, password, name, email, isAdmin ");
-			findQuery.append("FROM USERS");
+			String query = "SELECT userid, password, name, email, isAdmin FROM USERS";
 
 			con = ConnectionManager.getConnection();
-			pstmt = con.prepareStatement(findQuery.toString(), ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY);
+			pstmt = con.prepareStatement(query);
 
 			rs = pstmt.executeQuery();
 
