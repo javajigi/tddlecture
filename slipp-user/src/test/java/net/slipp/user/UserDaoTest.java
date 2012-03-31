@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class UserDaoTest {
 	private UserDao dut;
-	
+
 	@Before
 	public void setup() {
 		dut = new UserDao();
@@ -19,8 +19,8 @@ public class UserDaoTest {
 		User expected = new User("userId", "password", "name", "javajigi@slipp.net", true);
 		dut.remove(expected.getUserId());
 
-		dut.create(expected);
-		
+		dut.insert(expected);
+
 		User actual = dut.findUser(expected.getUserId());
 		assertThat(actual, is(expected));
 	}

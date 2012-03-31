@@ -48,6 +48,7 @@ public class User {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + (isAdmin ? 1231 : 1237);
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
@@ -68,6 +69,8 @@ public class User {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
+		if (isAdmin != other.isAdmin)
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -84,5 +87,11 @@ public class User {
 		} else if (!userId.equals(other.userId))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email
+				+ ", isAdmin=" + isAdmin + "]";
 	}
 }

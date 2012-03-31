@@ -13,6 +13,12 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.0</version>
+		</dependency>
+
 		<!-- Log - slf4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -40,7 +46,7 @@
 			<artifactId>h2</artifactId>
 			<version>1.3.159</version>
 		</dependency>
-		
+
 		<!-- Jetty -->
 		<dependency>
 			<groupId>org.mortbay.jetty</groupId>
@@ -67,19 +73,19 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
+
 		<!-- Spring Framework -->
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-webmvc</artifactId>
-	        <version>${org.springframework-version}</version>
-	    </dependency>	
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-jdbc</artifactId>
-	        <version>${org.springframework-version}</version>
-	    </dependency>	
-	    
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
 		<!-- Sitemesh -->
 		<dependency>
 			<groupId>opensymphony</groupId>
@@ -115,7 +121,7 @@
 					<warSourceDirectory>webapp</warSourceDirectory>
 					<warSourceExcludes>html/**</warSourceExcludes>
 				</configuration>
-			</plugin>			
+			</plugin>
 		</plugins>
 	</build>
 </project>

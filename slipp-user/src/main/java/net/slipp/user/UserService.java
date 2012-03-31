@@ -17,7 +17,7 @@ public class UserService {
 			throw new ExistedUserException(user.getUserId() + "는 이미 존재하는 아이디입니다.");
 		}
 
-		getUserDAO().create(user);
+		getUserDAO().insert(user);
 	}
 
 	public void update(User user) throws SQLException {
