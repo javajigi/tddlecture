@@ -13,10 +13,6 @@ public class UserService {
 	}
 
 	public void create(User user) throws SQLException, ExistedUserException {
-		if (findUser(user.getUserId()) != null) {
-			throw new ExistedUserException(user.getUserId() + "는 이미 존재하는 아이디입니다.");
-		}
-
 		getUserDAO().insert(user);
 	}
 
